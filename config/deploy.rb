@@ -63,17 +63,21 @@ task :install_ruby do
   on roles(:app) do
     within release_path do
       begin
+        info "Validate: Begin"
         current_ruby = capture(:rvm, "current")
+        info "Validate: #{current_ruby}"
       rescue SSHKit::Command::Failed
-        after "install_ruby", "rvm1:install:rvm"
-        after "install_ruby", "rvm1:install:ruby"
-      end
-
-      if current_ruby.include?("not installed")
+        info "Validate: No hay RVM"
         after "install_ruby", "rvm1:install:rvm"
         after "install_ruby", "rvm1:install:ruby"
       else
-        info "Ruby: Using #{current_ruby}"
+        if current_ruby.include?("not installed")
+          info "Validate: No esta instalado ruby"
+          after "install_ruby", "rvm1:install:rvm"
+          after "install_ruby", "rvm1:install:ruby"
+        else
+          info "Ruby: Using #{current_ruby}"
+        end
       end
     end
   end

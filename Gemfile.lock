@@ -495,7 +495,7 @@ GEM
     rb-fsevent (0.10.4)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
-    recipient_interceptor (0.2.0)
+    recipient_interceptor (0.3.0)
       mail
     redcarpet (3.5.1)
     referer-parser (0.3.0)
@@ -747,7 +747,7 @@ DEPENDENCIES
   rails (= 5.2.4.5)
   rails-assets-leaflet!
   rails-assets-markdown-it (~> 9.0.1)!
-  recipient_interceptor (~> 0.2.0)
+  recipient_interceptor (~> 0.3.0)
   redcarpet (~> 3.5.1)
   responders (~> 3.0.1)
   rinku (~> 2.0.6)
